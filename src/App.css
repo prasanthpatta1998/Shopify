@@ -106,6 +106,7 @@ div{
     border: 0px;
     padding: 10px 20px; 
     border-radius: 25px;
+    cursor: pointer;
 }
 
 .inr-mo{
@@ -131,21 +132,17 @@ div{
 }
 
 .paying-option-container{
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+   display: none;
 }
 .paying-option{
     margin-top: 35px;
     border: 2px #51f1cc solid;
-    width: 281px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 29px;
-    padding: 5px 10px;
-    border-radius: 25px;
+    padding: 6px 3px;
+    border-radius: 50px;
 }
 
 .dynamic-button{
@@ -160,6 +157,25 @@ div{
 .change{
     background: black;
     color: white;
+}
+
+.bg-color{
+    border: 2.5px solid #33e7ad;
+}
+
+span{
+    position: absolute;
+    top: 29%;
+    left: 16%;
+    background: linear-gradient(to right, lightblue, lightgreen);
+    width: 140px;
+    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    font-weight: 600;
+    border-radius: 25px;
 }
 
 @media screen and (min-width: 768px) {
@@ -187,5 +203,13 @@ div{
     box-shadow: 1px 1px 18px 5px rgb(224 225 225);
     border-radius: 4%;
     padding-bottom: 3%;
+    }
+
+    .paying-option-container{
+        display: block;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

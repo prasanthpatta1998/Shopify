@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Navbar from "./components/Navbar"
-import { RiCornerDownRightLine } from "react-icons/ri";
+import { BsCheckLg } from "react-icons/bs";
 import './App.css'
 
 const shopifyData = [
@@ -45,6 +45,18 @@ const App = () => {
   return(
     <div>
       <Navbar />
+      <div className="paying-option-container">
+      <div className="paying-option">
+        <button className={`${dynamicStyle1} dynamic-button`} onClick={() => {
+          changeDynamicButton1(true)
+          changeDynamicButton2(false)
+        }}>Pay Monthly</button>
+        <button className={`${dynamicStyle2} dynamic-button`} onClick={()=>{
+          changeDynamicButton2(true)
+          changeDynamicButton1(false)
+        }}>{`Pay Yearly (save 25%)`}</button>
+      </div>
+      </div>
       <ul className="sm-pay-method">
         {shopifyData.map(each => {
 
@@ -71,34 +83,25 @@ const App = () => {
               <p className="plan">{`What included on ${method.payMethod}`}</p>
               <div className="plan-container">
                 {method.includes.map(eachItem => <div className="plan-list-item">
-                  <RiCornerDownRightLine className="right-mark"/>
+                  <BsCheckLg className="right-mark"/>
                   <p >{eachItem}</p>
                   </div>)}
               </div>
               <button className="try-button">Try for free</button>
       </div>
-      <div className="paying-option-container">
-      <div className="paying-option">
-        <button className={`${dynamicStyle1} dynamic-button`} onClick={() => {
-          changeDynamicButton1(true)
-          changeDynamicButton2(false)
-        }}>Pay Monthly</button>
-        <button className={`${dynamicStyle2} dynamic-button`} onClick={()=>{
-          changeDynamicButton2(true)
-          changeDynamicButton1(false)
-        }}>{`Pay Yearly (save 25%)`}</button>
-      </div>
-      </div>
       <ul className="display-pay-methods">
         {
           shopifyData.map(each => {
 
-            const intValue = parseInt(each.amount.replace(/,/g, ''), 10);
-            const charges = dynamicb1 ? each.amount : parseInt(((intValue * 12) - (intValue * 12 * 0.25)) / 12)
-        
+            const intValue = parseInt(each.amount.replace(',', ''));
+            const value = (parseInt(((intValue * 12) - (intValue * 12 * 0.25)) / 12)).toString()
+            const charges = dynamicb1 ? each.amount : value[0] +","+ value.slice(1)
+            const backgroundColor = each.id === method.id && "bg-color"
+            const mostPopular = each.id === 1
 
             return(
-            <li className="pay-method-items"> 
+            <li className={`pay-method-items ${backgroundColor}`}> 
+            {mostPopular && <span>Most Popular</span>}
               <h1 className="heading">{each.payMethod}</h1>
               <p className="pay1">{each.pay1}</p>
               <p className="pay2">{each.pay2}</p>
@@ -111,7 +114,7 @@ const App = () => {
               <p className="plan">{`What included on ${each.payMethod}`}</p>
               <div className="plan-container">
                 {method.includes.map(eachItem => <div className="plan-list-item">
-                  <RiCornerDownRightLine className="right-mark"/>
+                  <BsCheckLg className="right-mark"/>
                   <p >{eachItem}</p>
                   </div>)}
               </div>

@@ -72,6 +72,15 @@
     margin: 0px;
 }
 
+/* .submenu{
+    display: none;
+}
+
+.submenu li{
+    display: flex;
+    justify-content: space-between;
+} */
+
 @media screen and (min-width: 768px){
     .nav-container{
         padding-left: 10%;
@@ -116,5 +125,24 @@
         height: 75px;
     }
 
+    
+    /* hovering over an element
+
+    .submenu{
+        display: none;
+        position: absolute;
+        top: 8%;
+        width: 200px;
+        padding: 0px 23px;
+        border: 2px solid black;
+        border-radius: 7px;
+        list-style-type: none;
+        background: blanchedalmond;
+        z-index: 1;
+    }
+
+    .div-item:hover .submenu{
+        display: block;
+    } */
    
 }
